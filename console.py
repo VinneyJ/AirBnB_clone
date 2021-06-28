@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             new_obj = eval(command)()
             new_obj.save()
             print(new_obj.id)
-    
+
     def do_show(self, line):
         """Deletes the string represnetation of an instance
         based on the class name and id.
@@ -195,10 +195,10 @@ class HBNBCommand(cmd.Cmd):
                 elif method_name == 'count':
                     print(len(self.get_objects(class_name))
                 elif method_name == 'show':
-                    class_id = splitted[2][1:-1]
+                    class_id=splitted[2][1:-1]
                     self.do_show(class_name + ' ' + class_id)
                 elif method_name == 'destroy':
-                    class_id = splitted[2][1:-1]
+                    class_id=splitted[2][1:-1]
                     self.do_destroy(class_name + ' ' + class_id)
 
     def emptyline(self):
