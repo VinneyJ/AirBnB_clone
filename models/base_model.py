@@ -1,10 +1,26 @@
 #!/usr/bin/python3
+"""
+module: class BaseModel
+creates new instance objects 
+
+"""
 import uuid
 from datetime import datetime
 
 class BaseModel:
-    def __init__(self, *args, **kwargs):
+    """
+    BaseClass model
+    """
 
+    def __init__(self, *args, **kwargs):
+        
+        """
+        initializes all the instances with mapped with the attributes
+        attributes:
+            id = unique id for every instance
+            created_at = the time of instance creation
+            updated_at = time of instance edit 
+        """
         if kwargs:
             time_format = "%Y-%m-%dT%H:%M:%S.%f"
             crt =  kwargs['created_at']
