@@ -3,10 +3,23 @@ import uuid
 from datetime import datetime
 
 class BaseModel:
-    def __init__(self, id=uuid.uuid4(), created_at=None, Updated_at=None):
-        self.id = str(id)
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+    def __init__(self, *args, **kwargs):
+
+        if kwargs:
+            time_format = "%Y-%m-%dT%H:%M:%S.%f"
+            crt =  kwargs['created_at']
+            updt = kwargs['updated_at']
+            self.created_at = datetime.strptime(crt, time_format)
+            self.updated_at = datetime.strptime(updt, time_format)
+
+            not_to_list = ["created_at", "__class__", "updated_at"]
+            for key, value in kwargs.items():
+                if key not in not_to_list:
+                    self.__setattr__(key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
 
     def __str__(self):
