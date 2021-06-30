@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime
 import models
 
-class BaseModel:
+class BaseModel():
     """
     BaseClass model
     """
@@ -44,7 +44,7 @@ class BaseModel:
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        self.updated_at = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')
+        self.updated_at = datetime.utcnow()
         models.storage.save()
 
     def to_dict(self):
